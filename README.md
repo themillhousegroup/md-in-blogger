@@ -1,4 +1,4 @@
-# Embedding Markdown in a Blogger HTML page (2023 edition)
+https://themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js# Embedding Markdown in a Blogger HTML page (2023 edition)
 This originally was on my blog at https://js-react.blogspot.com/2017/01/using-markdown-in-blogger.html.
 
 [Markdown](http://daringfireball.net/projects/markdown/) has become very popular due to its simplicity and its wide adoption in Github and other developer websites. So when I was looking at Blogger to start a blog, I wanted the same easy syntax. I had expected that Blogger would support Markdown natively. Alas it does not. 
@@ -13,15 +13,15 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
 
    1. Open your template, by clicking the "Template" menu item. This displays the current template. Click Edit to modify the template. At the top of your template, add the following tags just before the &lt;/head&gt; tag.
 ```html
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"/>
 ```
 
    2. At the bottom of the template, add the following tags just before the </html> tag.
 ```html
-<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js' type='text/javascript'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/showdown/1.6.2/showdown.min.js' type='text/javascript'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' type='text/javascript'></script>
-<script src='//mxp22.surge.sh/markdown-highlight-in-blogger.js' type='text/javascript'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js' type='text/javascript'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js' type='text/javascript'></script>
+<script src='https://code.jquery.com/jquery-3.7.1.min.js' type='text/javascript'></script>
+<script src='//themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js' type='text/javascript'></script>
 ```
 
    3. Save your template. The first three steps need to be done only once. If you have a mobile template, remember to adjust that template as well.
