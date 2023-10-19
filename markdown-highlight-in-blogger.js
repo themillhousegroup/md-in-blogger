@@ -26,8 +26,19 @@ MarkdownHighlightInBlogger.convertMD = function () {
     // showdown renderer
     var converter = new showdown.Converter({});
     converter.setFlavor('github');
+
+    $('div.post-body').each(function (i, block) {
+      console.info(`Found post body block ${block.id}`);
+    });
+
+
+    $('span.post-labels a').each(function (i, tagLink) {
+      console.info(`Found label ${tagLink.innerText}`);
+    });
+
+
     $('pre.markdown').each(function (i, block) {
-      console.info(`Converting block ${block.id`);
+      console.info(`Converting block ${block.id}`);
       //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
       var rawtext = block.innerText;
       var md_html = converter.makeHtml(rawtext);
