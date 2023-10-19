@@ -18,7 +18,7 @@ MarkdownHighlightInBlogger.unescapeHTML = function (html) {
   return htmlNode.textContent; // FF
 };
 
-MarkdownHighlightInBlogger.convertBlock = function () {
+MarkdownHighlightInBlogger.convertBlock = function (block) {
       //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
       var rawtext = block.innerText;
       console.info(`Converting '${rawText}'...`);
