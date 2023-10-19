@@ -16,7 +16,7 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"/>
 ```
 
-   2. At the bottom of the template, add the following tags just before the </html> tag.
+   2. At the bottom of the template, add the following tags just before the `</html>` tag.
 ```html
 <script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js' type='text/javascript'></script>
 <script src='//cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js' type='text/javascript'></script>
@@ -55,5 +55,5 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
 
 
 I have set the showdown convertor to to GitHub flavor markdown. 
-The libraries are hosted by the kind folks at [cdnjs](http://cdnjs.com). The core javascript is hosted on the [surge.sh](http://surge.sh) CDN.
+The libraries are hosted by the kind folks at [cdnjs](http://cdnjs.com). The core javascript is hosted on [github-pages](https://themillhousegroup.github.io/md-in-blogger/)  
 
