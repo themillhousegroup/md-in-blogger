@@ -1,4 +1,4 @@
-# Embedding Markdown in a Blogger HTML page.
+# Embedding Markdown in a Blogger HTML page (2023 edition)
 This originally was on my blog at https://js-react.blogspot.com/2017/01/using-markdown-in-blogger.html.
 
 [Markdown](http://daringfireball.net/projects/markdown/) has become very popular due to its simplicity and its wide adoption in Github and other developer websites. So when I was looking at Blogger to start a blog, I wanted the same easy syntax. I had expected that Blogger would support Markdown natively. Alas it does not. 
