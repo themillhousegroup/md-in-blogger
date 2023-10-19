@@ -27,6 +27,7 @@ MarkdownHighlightInBlogger.convertMD = function () {
     var converter = new showdown.Converter({});
     converter.setFlavor('github');
     $('pre.markdown').each(function (i, block) {
+      console.info(`Converting block ${block.id`);
       //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
       var rawtext = block.innerText;
       var md_html = converter.makeHtml(rawtext);
