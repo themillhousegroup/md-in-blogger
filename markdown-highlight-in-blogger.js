@@ -18,6 +18,17 @@ MarkdownHighlightInBlogger.unescapeHTML = function (html) {
   return htmlNode.textContent; // FF
 };
 
+MarkdownHighlightInBlogger.convertBlock = function () {
+      //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
+      var rawtext = block.innerText;
+      console.info(`Converting '${rawText}'...`);
+      var md_html = converter.makeHtml(rawtext);
+      console.info(`Converted to '${md_html}'`);
+      var md = $(md_html); //.css('border','3px solid blue');
+      md.insertBefore(block);
+      block.hidden = true;
+};
+
 MarkdownHighlightInBlogger.convertMD = function () {
   try {
 
@@ -29,22 +40,24 @@ MarkdownHighlightInBlogger.convertMD = function () {
 
     $('div.post-body').each(function (i, block) {
       console.info(`Found post body block ${block.id}`);
+      var convertBody = true;
+      $('span.post-labels a').each(function (i, tagLink) {
+        console.info(`Found label ${tagLink.innerText}`);
+        if (tagLink.innerText === "no-markdown") {
+          console.warn("Not performing Markdown conversion on blog post body");
+          tagLink.hidden = true;
+          convertBody = false;
+        }
+      });
+
+      if (convertBody) {
+        MarkdownHighlightInBlogger.convertBlock(block);
+      }
     });
-
-
-    $('span.post-labels a').each(function (i, tagLink) {
-      console.info(`Found label ${tagLink.innerText}`);
-    });
-
 
     $('pre.markdown').each(function (i, block) {
       console.info(`Converting block ${block.id}`);
-      //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
-      var rawtext = block.innerText;
-      var md_html = converter.makeHtml(rawtext);
-      var md = $(md_html); //.css('border','3px solid blue');
-      md.insertBefore(block);
-      block.hidden = true;
+      MarkdownHighlightInBlogger.convertBlock(block);
     });
     $('pre code').each(function (i, block) {
       hljs.highlightBlock(block);
