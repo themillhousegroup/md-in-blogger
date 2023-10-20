@@ -34,10 +34,10 @@ MarkdownHighlightInBlogger.convertMD = function () {
     $('div.post-body').each(function (i, block) {
       console.info(`Found post body block ${block.id}`);
       var convertBody = true;
-      $('span.post-labels a').each(function (i, tagLink) {
+      $(block).find('span.post-labels a').each(function (i, tagLink) {
         console.info(`Found label ${tagLink.innerText}`);
         if (tagLink.innerText === "no-markdown") {
-          console.warn("Not performing Markdown conversion on blog post body");
+          console.warn(`Not performing Markdown conversion on blog post body ${block.id}`);
           tagLink.hidden = true;
           convertBody = false;
         }
