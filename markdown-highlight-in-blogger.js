@@ -32,19 +32,20 @@ MarkdownHighlightInBlogger.convertMD = function () {
 
 
     $('div.post.hentry').each(function (i, block) {
-      console.info(`Found post body block ${block.id}`);
+      console.info(`Found post entry block ${block.id}`);
       var convertBody = true;
       $(block).find('span.post-labels a').each(function (i, tagLink) {
         console.info(`Found label ${tagLink.innerText}`);
         if (tagLink.innerText === "no-markdown") {
-          console.warn(`Not performing Markdown conversion on blog post body ${block.id}`);
+          console.warn(`Not performing Markdown conversion on blog post entry ${block.id}`);
           tagLink.hidden = true;
           convertBody = false;
         }
       });
 
       if (convertBody) {
-        MarkdownHighlightInBlogger.convertBlock(block, "post-body");
+        var body = $(block).find("div.post-body.entry-content");
+        MarkdownHighlightInBlogger.convertBlock(body, "post-body entry-content markdown-enhanced");
       }
     });
 
