@@ -18,14 +18,15 @@ MarkdownHighlightInBlogger.unescapeHTML = function (html) {
   return htmlNode.textContent; // FF
 };
 
-MarkdownHighlightInBlogger.convertBlock = function (block) {
+MarkdownHighlightInBlogger.convertBlock = function (block, classToAdd) {
       //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
-      var rawtext = block.innerText;
+      var rawText = block.innerText;
       console.info(`Converting '${rawText}'...`);
-      var md_html = converter.makeHtml(rawtext);
-      console.info(`Converted to '${md_html}'`);
-      var md = $(md_html); //.css('border','3px solid blue');
+      var html = converter.makeHtml(rawText);
+      console.info(`Converted to '${html}'`);
+      var md = $(html); //.css('border','3px solid blue');
       md.insertBefore(block);
+      classToAdd && md.addClass(classToAdd);
       block.hidden = true;
 };
 
@@ -51,7 +52,7 @@ MarkdownHighlightInBlogger.convertMD = function () {
       });
 
       if (convertBody) {
-        MarkdownHighlightInBlogger.convertBlock(block);
+        MarkdownHighlightInBlogger.convertBlock(block, "post-body");
       }
     });
 
