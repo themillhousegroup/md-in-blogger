@@ -19,15 +19,18 @@ MarkdownHighlightInBlogger.unescapeHTML = function (html) {
 };
 
 MarkdownHighlightInBlogger.convertBlock = function (block, classToAdd) {
-      //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
-      var rawText = block.innerText;
-      console.info(`Converting '${rawText}'...`);
-      var html = converter.makeHtml(rawText);
-      console.info(`Converted to '${html}'`);
-      var md = $(html); //.css('border','3px solid blue');
-      md.insertBefore(block);
-      classToAdd && md.addClass(classToAdd);
-      block.hidden = true;
+    // showdown renderer
+    var converter = new showdown.Converter({});
+    converter.setFlavor('github');
+    //var rawtext = MarkdownHighlightInBlogger.unescapeHTML(block.innerText);
+    var rawText = block.innerText;
+    console.info(`Converting '${rawText}'...`);
+    var html = converter.makeHtml(rawText);
+    console.info(`Converted to '${html}'`);
+    var md = $(html); //.css('border','3px solid blue');
+    md.insertBefore(block);
+    classToAdd && md.addClass(classToAdd);
+    block.hidden = true;
 };
 
 MarkdownHighlightInBlogger.convertMD = function () {
@@ -35,9 +38,6 @@ MarkdownHighlightInBlogger.convertMD = function () {
 
     console.info('Converting markdown using jQuery');
 
-    // showdown renderer
-    var converter = new showdown.Converter({});
-    converter.setFlavor('github');
 
     $('div.post-body').each(function (i, block) {
       console.info(`Found post body block ${block.id}`);
