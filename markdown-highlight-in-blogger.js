@@ -44,7 +44,7 @@ MarkdownHighlightInBlogger.convertMD = function () {
       });
 
       if (convertBody) {
-        var body = $(block).find("div.post-body.entry-content");
+        var body = $(block).find("div.post-body.entry-content")[0];
         MarkdownHighlightInBlogger.convertBlock(body, "post-body entry-content markdown-enhanced");
       }
     });
