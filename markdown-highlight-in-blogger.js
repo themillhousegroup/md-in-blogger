@@ -2,7 +2,7 @@
 // markdown-highlight-in-blogger.js -- javascript for using Markdown in Blogger
 // Based on:
 // - Francis Tang's 2011: http://blog.chukhang.com/2011/09/markdown-in-blogger.html
-// - Divya van Mahajan's 2017:
+// - Divya van Mahajan's 2017: https://js-react.blogspot.com/2017/01/using-markdown-in-blogger.html
 //
 // Redistributable under a BSD-style open source license.
 // Documentation: https://github.com/themillhousegroup/md-in-blogger
@@ -31,7 +31,7 @@ MarkdownHighlightInBlogger.convertMD = function () {
     console.info('Converting markdown using jQuery');
 
 
-    $('div.post-body').each(function (i, block) {
+    $('div.post.hentry').each(function (i, block) {
       console.info(`Found post body block ${block.id}`);
       var convertBody = true;
       $(block).find('span.post-labels a').each(function (i, tagLink) {
