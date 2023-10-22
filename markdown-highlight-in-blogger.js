@@ -32,6 +32,14 @@ MarkdownHighlightInBlogger.convertMD = function () {
     // https://mermaid.js.org/config/usage.html
     mermaid.initialize({ startOnLoad: false });
 
+    $('pre code.mermaid').each(function (i, mermaidBlock) {
+      console.info(`Found mermaid block - applying pre-Mermaid unescapes`);
+      const oldContent = mermaidBlock.innerHTML;
+      var doc = new DOMParser().parseFromString(input, "text/html");
+      mermaidBlock.innerHTML = doc.documentElement.textContent
+    });
+
+
     $('div.post.hentry').each(function (i, block) {
       var convertBody = false;
       $(block).find('span.post-labels a').each(function (i, tagLink) {
@@ -55,9 +63,6 @@ MarkdownHighlightInBlogger.convertMD = function () {
     $('pre code:not(.mermaid)').each(function (i, block) {
       console.info(`Found code block - applying highlighting`)
       hljs.highlightBlock(block);
-    });
-    $('pre code.mermaid').each(function (i, block) {
-      console.info(`Found mermaid block - applying Mermaid`)
     });
 
     mermaid.run({
