@@ -1,4 +1,36 @@
-https://themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js# Embedding Markdown in a Blogger HTML page (2023 edition)
+# 2023 Update
+Embedding Markdown (and Mermaid.js diagrams) in a Blogger HTML page (2023 edition)
+
+### Rationale:
+See my blog post at https://blog.themillhousegroup.com/2023/10/markdown-and-mermaid-on-blogger-in-2023.html
+
+### Instructions:
+
+- Open your template by going to ** Theme -> Customize -> Edit HTML**
+- Add the following stylesheet at the top, just after the `title` tag:
+  ```html
+    <link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css' rel='stylesheet'/>
+   ```
+- Add the following scripts to the bottom, just before the `/html` tag:
+  ```html
+   <script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js' type='text/javascript'/>
+   <script src='//cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js' type='text/javascript'/>
+   <script src='https://code.jquery.com/jquery-3.7.1.min.js' type='text/javascript'/>
+   <script src='https://cdn.jsdelivr.net/npm/mermaid@10.5.1/dist/mermaid.min.js' type='text/javascript'/>
+   <script src='//themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js' type='text/javascript'/>
+```
+- Save your template
+- Now if you want to write your whole blog post in Markdown, add the `markdown-enabled` Label to the post
+- If you just want to use Markdown in certain sections, use the `pre class="markdown"` solution as shown below
+- If you want to use Mermaid diagrams, use a ` ```mermaid ... ``` ` code fence and away you go!
+
+### Running this locally (for development/debugging)
+- Install `serve` (e.g. `brew install serve`)
+- `% serve . -l 8080` from the project root
+- Select `test.html`
+
+# 2017 Edition below:
+
 This originally was on my blog at https://js-react.blogspot.com/2017/01/using-markdown-in-blogger.html.
 
 [Markdown](http://daringfireball.net/projects/markdown/) has become very popular due to its simplicity and its wide adoption in Github and other developer websites. So when I was looking at Blogger to start a blog, I wanted the same easy syntax. I had expected that Blogger would support Markdown natively. Alas it does not. 
@@ -56,8 +88,3 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
 
 I have set the showdown convertor to to GitHub flavor markdown. 
 The libraries are hosted by the kind folks at [cdnjs](http://cdnjs.com). The core javascript is hosted on [github-pages](https://themillhousegroup.github.io/md-in-blogger/)  
-
-## Running this locally (for development/debugging)
-- Install `serve` (e.g. `brew install server`)
-- `% serve . -l 8080` from the project root
-- Select `test.html`
