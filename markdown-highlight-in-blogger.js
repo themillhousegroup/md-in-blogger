@@ -35,7 +35,7 @@ MarkdownHighlightInBlogger.convertMD = function () {
     $('pre code.mermaid').each(function (i, mermaidBlock) {
       console.info(`Found mermaid block - applying pre-Mermaid unescapes`);
       const oldContent = mermaidBlock.innerHTML;
-      var doc = new DOMParser().parseFromString(input, "text/html");
+      var doc = new DOMParser().parseFromString(oldContent, "text/html");
       mermaidBlock.innerHTML = doc.documentElement.textContent
     });
 
