@@ -27,12 +27,7 @@ MarkdownHighlightInBlogger.convertBlock = function (block, classToAdd) {
 
 MarkdownHighlightInBlogger.convertMD = function () {
   try {
-
-    console.info('Converting markdown using jQuery');
-
-
     $('div.post.hentry').each(function (i, block) {
-      console.info(`Found post entry block ${block.id}`);
       var convertBody = false;
       $(block).find('span.post-labels a').each(function (i, tagLink) {
         if (tagLink.innerText === "markdown-enabled") {
@@ -52,8 +47,13 @@ MarkdownHighlightInBlogger.convertMD = function () {
       console.info(`Converting block ${block.id}`);
       MarkdownHighlightInBlogger.convertBlock(block);
     });
-    $('pre code').each(function (i, block) {
+    $('pre code:not(.mermaid)').each(function (i, block) {
+      console.info(`Found code block - applying highlighting`)
       hljs.highlightBlock(block);
+    });
+    $('pre code.mermaid').each(function (i, block) {
+      console.info(`Found mermaid block - applying Mermaid`)
+      
     });
   } catch (exc) {
     console.error(exc);
