@@ -27,6 +27,11 @@ MarkdownHighlightInBlogger.convertBlock = function (block, classToAdd) {
 
 MarkdownHighlightInBlogger.convertMD = function () {
   try {
+    // Wait until everything has been processed before
+    // attempting Mermaid diagram conversion;
+    // https://mermaid.js.org/config/usage.html
+    mermaid.initialize({ startOnLoad: false });
+
     $('div.post.hentry').each(function (i, block) {
       var convertBody = false;
       $(block).find('span.post-labels a').each(function (i, tagLink) {
@@ -53,7 +58,12 @@ MarkdownHighlightInBlogger.convertMD = function () {
     });
     $('pre code.mermaid').each(function (i, block) {
       console.info(`Found mermaid block - applying Mermaid`)
-      
+      // Pu
+    });
+
+    mermaid.run({
+      // querySelector: '.someOtherClass',
+      suppressErrors: false,
     });
   } catch (exc) {
     console.error(exc);
