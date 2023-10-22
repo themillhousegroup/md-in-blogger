@@ -33,13 +33,12 @@ MarkdownHighlightInBlogger.convertMD = function () {
 
     $('div.post.hentry').each(function (i, block) {
       console.info(`Found post entry block ${block.id}`);
-      var convertBody = true;
+      var convertBody = false;
       $(block).find('span.post-labels a').each(function (i, tagLink) {
-        console.info(`Found label ${tagLink.innerText}`);
-        if (tagLink.innerText === "no-markdown") {
-          console.warn(`Not performing Markdown conversion on blog post entry ${block.id}`);
+        if (tagLink.innerText === "markdown-enabled") {
+          console.info(`Found label '${tagLink.innerText}' - will perform Markdown conversion on blog post entry ${block.id}`);
           tagLink.hidden = true;
-          convertBody = false;
+          convertBody = true;
         }
       });
 
