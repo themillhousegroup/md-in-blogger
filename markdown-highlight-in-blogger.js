@@ -58,11 +58,10 @@ MarkdownHighlightInBlogger.convertMD = function () {
     });
     $('pre code.mermaid').each(function (i, block) {
       console.info(`Found mermaid block - applying Mermaid`)
-      // Pu
     });
 
     mermaid.run({
-      // querySelector: '.someOtherClass',
+      querySelector: 'pre code.mermaid',
       suppressErrors: false,
     });
   } catch (exc) {
