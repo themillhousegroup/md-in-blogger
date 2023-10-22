@@ -57,3 +57,7 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
 I have set the showdown convertor to to GitHub flavor markdown. 
 The libraries are hosted by the kind folks at [cdnjs](http://cdnjs.com). The core javascript is hosted on [github-pages](https://themillhousegroup.github.io/md-in-blogger/)  
 
+## Running this locally (for development/debugging)
+- Install `serve` (e.g. `brew install server`)
+- `% serve . -l 8080` from the project root
+- Select `test.html`
