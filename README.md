@@ -20,6 +20,7 @@ See my blog post at https://blog.themillhousegroup.com/2023/10/markdown-and-merm
    <script src='//themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js' type='text/javascript'/>
 ```
 - Save your template
+- Do the same if you're using a custom mobile template
 - Now if you want to write your whole blog post in Markdown, add the `markdown-enabled` Label to the post
 - If you just want to use Markdown in certain sections, use the `pre class="markdown"` solution as shown below
 - If you want to use Mermaid diagrams, use a ` ```mermaid ... ``` ` code fence and away you go!
