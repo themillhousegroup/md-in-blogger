@@ -18,10 +18,11 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
 
    2. At the bottom of the template, add the following tags just before the `</html>` tag.
 ```html
-<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js' type='text/javascript'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js' type='text/javascript'></script>
-<script src='https://code.jquery.com/jquery-3.7.1.min.js' type='text/javascript'></script>
-<script src='//themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js' type='text/javascript'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js' type='text/javascript'/>
+<script src='//cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js' type='text/javascript'/>
+<script src='https://code.jquery.com/jquery-3.7.1.min.js' type='text/javascript'/>
+<script src='https://cdn.jsdelivr.net/npm/mermaid@10.5.1/dist/mermaid.min.js' type='text/javascript'/>
+<script src='//themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js' type='text/javascript'/>
 ```
 
    3. Save your template. The first three steps need to be done only once. If you have a mobile template, remember to adjust that template as well.
@@ -39,16 +40,17 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
       ```
       </pre>
 ```
+   4. You can process the **entire** blog post as Markdown by applying the `markdown-enabled` **Label** to the blog post.
+
    5. Any HTML **pre** tags with the class **markdown** are converted by showdown. After this any HTML code tags in the generated HTML are highlighted by highlightJS. 
 
-   6. Remember to escape your &amp; with &amp;amp;, < with &amp;lt; and > with &amp;gt;.
+   6. Any Markdown code blocks annotated with `mermaid` as the block language will be converted to Mermaid diagrams.
 
    6. Save your post. Preview or Publish the post.
    7. Now go and start [mastering Markdown at Github](https://guides.github.com/features/mastering-markdown/)
-   8. If you don't have a Markdown editor, use [StackEdit](https://stackedit.io/editor) for a browser Markdown editor.
 ## How it works.
 
-   1. Finds `pre` elements marked with `class='markdown'` with jQuery.  
+   1. Finds `pre` elements marked with `class='markdown'` with jQuery, or the main blog post `div`, if it has the `markdown-enabled` label  
    2. Showdown converts the markdown text content into html and injects
       that back into the post before the pre (and hides the pre).
    3. Each code section in the converted HTML is color highlighted by HighlightJS.
