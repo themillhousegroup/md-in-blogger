@@ -11,14 +11,33 @@
 // namespace
 var MarkdownHighlightInBlogger = {};
 
+const htmlEntities = {
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#039;': "'",
+  '&ndash;': '-',
+};
+
+MarkdownHighlightInBlogger.replaceEntities = function (str) {
+  return str.replace(/&[\w#]+;/g, entity => {
+    return htmlEntities[entity] || entity;
+  });
+}
+
 MarkdownHighlightInBlogger.convertBlock = function (block, classToAdd) {
     // showdown renderer
     var converter = new showdown.Converter({});
     converter.setFlavor('github');
     var rawText = block.innerHTML;
-    console.info(`Converting '${rawText}'...`);
-    var html = converter.makeHtml(rawText);
-    console.info(`Converted to '${html}'`);
+
+    console.info(`Converting:\n'${rawText}'...`);
+    var withEntitiesReplaced = MarkdownHighlightInBlogger.replaceEntities(rawText)
+
+    console.info(`Entities replaced:\n '${withEntitiesReplaced}'...`);
+    var html = converter.makeHtml(withEntitiesReplaced);
+    console.info(`Converted to:\n'${html}'`);
     var md = $(html); //.css('border','3px solid blue');
     md.insertBefore(block);
     classToAdd && md.addClass(classToAdd);

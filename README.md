@@ -84,9 +84,10 @@ jQuery had the nice bonus of cleaning up the previous code by abstracting away t
 ## How it works.
 
    1. Finds `pre` elements marked with `class='markdown'` with jQuery, or the main blog post `div`, if it has the `markdown-enabled` label  
-   2. Showdown converts the markdown text content into html and injects
+   2. Any HTML entities such as `&gt;` get replaced so that they will be rendered properly
+   3. Showdown converts the markdown text content into html and injects
       that back into the post before the pre (and hides the pre).
-   3. Each code section in the converted HTML is color highlighted by HighlightJS.
+   4. Each code section in the converted HTML is color highlighted by HighlightJS.
 
 
 I have set the showdown convertor to to GitHub flavor markdown. 
