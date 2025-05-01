@@ -16,7 +16,7 @@ See my blog post at https://blog.themillhousegroup.com/2023/10/markdown-and-merm
    <script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js' type='text/javascript'/>
    <script src='//cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js' type='text/javascript'/>
    <script src='https://code.jquery.com/jquery-3.7.1.min.js' type='text/javascript'/>
-   <script src='https://cdn.jsdelivr.net/npm/mermaid@10.5.1/dist/mermaid.min.js' type='text/javascript'/>
+   <script src='https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js' type='text/javascript'/>
    <script src='//themillhousegroup.github.io/md-in-blogger/markdown-highlight-in-blogger.js' type='text/javascript'/>
 ```
 - Save your template
