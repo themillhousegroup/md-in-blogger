@@ -86,6 +86,28 @@ MarkdownHighlightInBlogger.convertMD = function () {
       mermaidBlock.innerHTML = doc.documentElement.textContent;
     });
 
+      // Bring in ALL the network diagram icon sets from https://github.com/themillhousegroup/affinity-for-mermaid,
+      // giving them nice names for use in the mermaid diagrams.
+      // Use these with the architecture-beta Mermaid syntax. 
+      // They are lazy-loaded so won't affect page load times 
+      mermaid.registerIconPacks([
+      {
+          name: 'affinity',
+          loader: () =>
+          fetch('https://themillhousegroup.github.io/affinity-for-mermaid/icons.json').then((res) => res.json()),
+      },
+      {
+          name: 'affsquare',
+          loader: () =>
+          fetch('https://themillhousegroup.github.io/affinity-for-mermaid/square.json').then((res) => res.json()),
+      },
+      {
+          name: 'affcircle',
+          loader: () =>
+          fetch('https://themillhousegroup.github.io/affinity-for-mermaid/circle.json').then((res) => res.json()),
+      },
+      ]);
+    
     mermaid.run({
       querySelector: 'pre code.mermaid',
       suppressErrors: false,
